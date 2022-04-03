@@ -32,13 +32,15 @@ fi
 
 ## Runtime stage
 FROM debian:10-slim AS runtime
+ARG TARGETARCH
+
 # Default log level
 ENV RUST_LOG=info
 WORKDIR /app
 
 # Add tini to properly handle signals
 ARG TINI_VERSION
-ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
+ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini-${TARGETARCH} /tini
 RUN chmod +x /tini
 
 # Add non-root user
