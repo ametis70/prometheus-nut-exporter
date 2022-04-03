@@ -33,6 +33,7 @@ fi
 ## Runtime stage
 FROM debian:10-slim AS runtime
 ARG TARGETARCH
+LABEL org.opencontainers.image.source="https://github.com/ametis70/prometheus-nut-exporter"
 
 # Default log level
 ENV RUST_LOG=info
